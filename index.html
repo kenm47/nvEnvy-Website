@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="en" data-theme="light" data-accent="coral" data-density="regular">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>nvEnvy — Notational notes, reborn for macOS.</title>
+  <meta name="description" content="A fast, keyboard-driven note-taking app for macOS — a modern rebuild of nvALT in Swift/SwiftUI. Plain-text Markdown, instant search, iCloud sync." />
+  <meta name="theme-color" content="#1F2754" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/png" href="appicon.png" />
+  <link rel="apple-touch-icon" href="appicon.png" />
+
+  <!-- React + Babel for the Tweaks panel only -->
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<!-- ─────────────── Topbar ─────────────── -->
+<header class="topbar">
+  <div class="container">
+    <a class="mark" href="#top" aria-label="nvEnvy home">
+      <img src="appicon.png" alt="" />
+      <span>nvEnvy</span>
+    </a>
+    <nav>
+      <a href="#features">Features</a>
+      <a href="#shortcuts">Shortcuts</a>
+      <a href="#lineage">Lineage</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="cta" href="#download">
+      Download
+      <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true">
+        <path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- ─────────────── Hero ─────────────── -->
+<section class="hero" data-screen-label="01 Hero">
+  <div class="container">
+    <div class="icon-wrap">
+      <img src="appicon.png" alt="nvEnvy app icon — a navy notepad with a wilting bell-shaped flower" />
+    </div>
+    <h1>nv<span class="stress">Envy</span>.</h1>
+    <p class="tagline">Find any note as fast as you can remember it.</p>
+    <p class="meta">Requires macOS 14 Sonoma or later · Universal · MIT licensed</p>
+    <div class="ctas" id="download">
+      <a class="btn btn-primary" href="#download">
+        Download for Mac
+        <svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+          <path d="M7 2v8m-3-3l3 3 3-3M2 12h10" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <a class="btn btn-ghost" href="https://github.com/kenm47/nvEnvy" target="_blank" rel="noopener">
+        View on GitHub
+        <svg class="chevron" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+          <path d="M4 2l5 5-5 5" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────── Story ─────────────── -->
+<section class="story" data-screen-label="02 Story">
+  <div class="container-narrow">
+    <blockquote>
+      I&rsquo;ve used Notational Velocity and nvAlt for decades and wanted one I owned.
+    </blockquote>
+    <div class="attrib">Why this exists · A note from the author</div>
+  </div>
+</section>
+
+<!-- ─────────────── App showcase ─────────────── -->
+<section class="showcase" data-screen-label="03 Window">
+  <div class="container">
+    <div class="window" role="img" aria-label="nvEnvy main window — the selected note's title appears in the title bar, the search field labels Search or Create, the list shows note titles with their date modified, and the right pane is the editor.">
+      <!-- Title bar — note that nvEnvy puts the SELECTED note's title here, like nv/nvAlt did -->
+      <div class="win-chrome">
+        <div class="win-lights" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="win-title">all the other guys you wouldn't get this from</div>
+      </div>
+
+      <!-- Search row — cloud-sync icon + search-or-create field -->
+      <div class="win-search">
+        <svg class="win-cloud" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M7 17a4 4 0 1 1 .6-7.96A6 6 0 0 1 18.4 11.8 4 4 0 0 1 18 19H7Z"
+                stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+          <path d="m9.5 13 2 2 3.5-3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="win-field" role="combobox" aria-label="Search or create a note">
+          <svg class="search-ico" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <circle cx="6" cy="6" r="4" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M9.5 9.5 12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <span class="placeholder">Search or Create</span>
+        </div>
+      </div>
+
+      <!-- Body — list + editor -->
+      <div class="win-body">
+        <div class="win-list" role="listbox" aria-label="Notes">
+          <div class="note-row sel" aria-selected="true">
+            <span class="note-title">all the other guys you wouldn't get this from</span>
+            <span class="note-date">May 19, 2026 at 2:51 PM</span>
+          </div>
+          <div class="note-row alt">
+            <span class="note-title">how I gotta make you understand</span>
+            <span class="note-date">May 19, 2026 at 2:51 PM</span>
+          </div>
+          <div class="note-row">
+            <span class="note-title">what i'm feeling, so I just tell you</span>
+            <span class="note-date">May 19, 2026 at 2:50 PM</span>
+          </div>
+          <div class="note-row alt">
+            <span class="note-title">the rules you know and so do i</span>
+            <span class="note-date">May 19, 2026 at 2:50 PM</span>
+          </div>
+          <div class="note-row">
+            <span class="note-title">the full commitment i'm thinking of</span>
+            <span class="note-date">May 19, 2026 at 2:50 PM</span>
+          </div>
+          <div class="note-row alt">
+            <span class="note-title">people we've been with, that prove we're no strangers to love</span>
+            <span class="note-date">May 19, 2026 at 2:49 PM</span>
+          </div>
+          <div class="note-row">
+            <span class="note-title">good reasons to desert her. or should we just give her dessert?</span>
+            <span class="note-date">May 19, 2026 at 2:49 PM</span>
+          </div>
+          <div class="note-row alt">
+            <span class="note-title">reasons to let her down</span>
+            <span class="note-date">May 19, 2026 at 2:48 PM</span>
+          </div>
+          <div class="note-row">
+            <span class="note-title">reasons to run around</span>
+            <span class="note-date">May 19, 2026 at 2:48 PM</span>
+          </div>
+          <div class="note-row alt">
+            <span class="note-title">reasons to give her up</span>
+            <span class="note-date">May 19, 2026 at 2:48 PM</span>
+          </div>
+        </div>
+
+        <div class="win-editor">steve
+hank
+william
+bob
+george
+chad
+rick
+rupert
+nigel</div>
+      </div>
+
+      <!-- Status bar — count + sort -->
+      <div class="win-status">
+        <span>3,046 notes</span>
+        <span class="sort">
+          <span class="chev">▼</span>
+          <span>Date Modified</span>
+          <span class="chev">▾</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────── Features ─────────────── -->
+<section class="features" id="features" data-screen-label="04 Features">
+  <div class="container" style="text-align:center; margin-bottom: clamp(40px,5vw,80px);">
+    <p class="eyebrow">What it does</p>
+    <h2>The notes app, distilled.</h2>
+    <p class="lede" style="margin: 18px auto 0;">No folders to wrangle. No sync to babysit. No subscription. Just a search field and your text&nbsp;files.</p>
+  </div>
+
+  <!-- Band 1: Search-as-you-type -->
+  <div class="band">
+    <div class="container">
+      <div class="band-copy">
+        <p class="eyebrow">Find</p>
+        <h2>Search&#8209;as&#8209;you&#8209;type, like it&rsquo;s 2003.</h2>
+        <p class="lede">One field. Type a few letters; the matching note rises to the top. Hit Return to open it &mdash; or to create it.</p>
+        <ul class="deets">
+          <li>Title, body, and tag matches, ranked the way you&rsquo;d expect.</li>
+          <li>Empty query? Most&#8209;recent first.</li>
+          <li>Nothing matches? The next Return makes that note exist.</li>
+        </ul>
+      </div>
+      <div class="band-visual">
+        <div class="viz-search" aria-hidden="true">
+          <div class="bar">
+            <svg width="14" height="14" viewBox="0 0 14 14" style="color:var(--window-text-2)">
+              <circle cx="6" cy="6" r="4" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              <path d="M9.5 9.5L12 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <span class="typed">licen</span><span class="caret"></span>
+            <span class="ghost">3 of 3,046</span>
+          </div>
+          <div class="hit">
+            <span class="num">01</span>
+            <span class="title">interview w/ Brett re: nvAlt <mark>licen</mark>sing</span>
+            <span class="date">May 17</span>
+          </div>
+          <div class="hit">
+            <span class="num">02</span>
+            <span class="title">BSD-style <mark>licen</mark>se language</span>
+            <span class="date">Apr 22</span>
+          </div>
+          <div class="hit">
+            <span class="num">03</span>
+            <span class="title">SPM dependency <mark>licen</mark>ses, audit</span>
+            <span class="date">Mar 09</span>
+          </div>
+          <div class="hint">↩ to open · ⌘↩ to create &ldquo;licen&rdquo;</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Band 2: Plain text forever -->
+  <div class="band">
+    <div class="container">
+      <div class="band-copy">
+        <p class="eyebrow">Own</p>
+        <h2>Plain&nbsp;text. Plain&nbsp;folder. Plain&nbsp;forever.</h2>
+        <p class="lede">Every note is a real <span class="tok-pill">.md</span> file with YAML frontmatter for tags and dates. Edit them in BBEdit. Grep them in Terminal. Sync them with whatever you like.</p>
+        <ul class="deets">
+          <li>iCloud Drive sync with proper conflict resolution &mdash; built in.</li>
+          <li>One&#8209;click import from nvALT, including OpenMeta tags.</li>
+          <li>Finder tag mirroring keeps the OS in the loop.</li>
+        </ul>
+      </div>
+      <div class="band-visual">
+        <div class="viz-files" aria-hidden="true">
+          <div class="row head"><span></span><span>~/Notes</span><span style="text-align:right">Size</span></div>
+          <div class="row"><span class="ico">▸</span><span class="name">the long road to plain text.md</span><span class="size">1.4&nbsp;KB</span></div>
+          <div class="row"><span class="ico">▸</span><span class="name">interview w Brett re nvAlt licensing.md</span><span class="size">812&nbsp;B</span></div>
+          <div class="row"><span class="ico">▸</span><span class="name">v0.1.1 release notes, draft.md</span><span class="size">3.1&nbsp;KB</span></div>
+          <div class="row"><span class="ico">▸</span><span class="name">tooltip phrasing.md</span><span class="size">2.6&nbsp;KB</span></div>
+          <div class="row"><span class="ico">▸</span><span class="name">shipping checklist, v0.1.md</span><span class="size">964&nbsp;B</span></div>
+          <div class="row"><span class="ico">▸</span><span class="name">first README, kept for posterity.md</span><span class="size">1.0&nbsp;KB</span></div>
+          <div class="row" style="color:var(--ink-3)"><span class="ico">▸</span><span class="name">3,046 files · 0 lockfiles · 0 hidden caches</span><span class="size"></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Band 3: Markdown without modes -->
+  <div class="band">
+    <div class="container">
+      <div class="band-copy">
+        <p class="eyebrow">Write</p>
+        <h2>Markdown in place. Preview when you want&nbsp;it.</h2>
+        <p class="lede">Type Markdown the way you already do; nvEnvy styles it inline. Need a real render? <span class="tok-pill">⌘⌃P</span> opens a live preview window with custom CSS, source view, and Print&nbsp;/&nbsp;Save HTML.</p>
+        <ul class="deets">
+          <li><span class="tok-pill">[[Wikilinks]]</span> autocomplete and click&#8209;to&#8209;navigate.</li>
+          <li>Frontmatter <span class="tok-pill">#tags</span> with batch tagging and a tag sidebar.</li>
+          <li>Import from RTF, RTFD, HTML, PDF, Word, web archives. Export to plain text, HTML, RTF, Word.</li>
+        </ul>
+      </div>
+      <div class="band-visual">
+        <div class="viz-md" aria-hidden="true">
+          <span class="label" style="left:14px">Source</span>
+          <span class="label" style="left:calc(50% + 20px)">Rendered</span>
+          <div class="pane src">
+            <span class="tok-h"># the long road</span><br><br>
+            21 years ago I tried<br>
+            <span class="tok-strong">**Notational Velocity**</span><br>
+            because someone on a<br>
+            forum said it would<br>
+            <span class="tok-em">*ruin every other*</span><br>
+            <span class="tok-em">*notes app for me.*</span>
+          </div>
+          <div class="pane out">
+            <h4 class="md">the long road</h4>
+            <p class="md" style="margin-bottom:0">21 years ago I tried <span style="font-weight:700">Notational Velocity</span> because someone on a forum said it would <span style="font-style:italic">ruin every other notes app for me.</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Band 4: Keyboard-driven -->
+  <div class="band">
+    <div class="container">
+      <div class="band-copy">
+        <p class="eyebrow">Move</p>
+        <h2>Made for hands on a&nbsp;keyboard.</h2>
+        <p class="lede"><span class="tok-pill">⌘L</span> to search. <span class="tok-pill">⌘J&thinsp;/&thinsp;⌘K</span> through the list. <span class="tok-pill">↩</span> for the note. <span class="tok-pill">⎋</span> back to search. Nine&nbsp;bookmarks on <span class="tok-pill">⌘1&ndash;9</span>.</p>
+        <ul class="deets">
+          <li>Save and recall any search query as a bookmark.</li>
+          <li><span class="tok-pill">nvenvy://</span> URL schemes for automation.</li>
+          <li>AppleScript, Shortcuts (App Intents), and a Services menu entry.</li>
+        </ul>
+      </div>
+      <div class="band-visual">
+        <div class="viz-keys" aria-hidden="true" style="flex-direction:column; gap:14px; align-items:flex-start; max-width:300px">
+          <div style="display:flex;align-items:center;gap:8px;width:100%">
+            <span class="kbd wide">⌘</span><span class="kbd">L</span>
+            <span style="flex:1; font-family:var(--font-mono);font-size:12px;color:var(--ink-3);text-align:right">focus search</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;width:100%">
+            <span class="kbd wide">⌘</span><span class="kbd">J</span>
+            <span style="color:var(--ink-3);font-size:13px"> / </span>
+            <span class="kbd wide">⌘</span><span class="kbd">K</span>
+            <span style="flex:1; font-family:var(--font-mono);font-size:12px;color:var(--ink-3);text-align:right">next · prev</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;width:100%">
+            <span class="kbd">↩</span>
+            <span style="flex:1; font-family:var(--font-mono);font-size:12px;color:var(--ink-3);text-align:right">open / create</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;width:100%">
+            <span class="kbd wide">⌘</span>
+            <span class="kbd">1</span><span style="color:var(--ink-3);font-size:13px">…</span><span class="kbd">9</span>
+            <span style="flex:1; font-family:var(--font-mono);font-size:12px;color:var(--ink-3);text-align:right">bookmarks</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────── Shortcuts cheat sheet ─────────────── -->
+<section class="shortcuts" id="shortcuts" data-screen-label="05 Shortcuts">
+  <div class="container">
+    <div class="header">
+      <div>
+        <p class="eyebrow">Cheat sheet</p>
+        <h2>The whole app, on one&nbsp;page.</h2>
+      </div>
+      <p class="lede" style="max-width:38ch">If you knew nvAlt by muscle memory, you already know nvEnvy. Everything in its familiar place.</p>
+    </div>
+
+    <div class="grid">
+      <div class="grp">
+        <h4>Navigate</h4>
+        <div class="row"><span class="name">Focus search field</span><span class="keys"><span class="kbd">⌘</span><span class="kbd">L</span></span></div>
+        <div class="row"><span class="name">Create or select note</span><span class="keys"><span class="kbd">↩</span></span></div>
+        <div class="row"><span class="name">Back to search</span><span class="keys"><span class="kbd">⎋</span></span></div>
+        <div class="row"><span class="name">Next note</span><span class="keys"><span class="kbd">⌘</span><span class="kbd">J</span></span></div>
+        <div class="row"><span class="name">Previous note</span><span class="keys"><span class="kbd">⌘</span><span class="kbd">K</span></span></div>
+        <div class="row"><span class="name">Deselect / snapback</span><span class="keys"><span class="kbd">⌘</span><span class="kbd">D</span></span></div>
+        <div class="row"><span class="name">Toggle note list</span><span class="keys"><span class="kbd">⌘</span><span class="kbd">⇧</span><span class="kbd">C</span></span></div>
+        <div class="row"><span class="name">Toggle layout</span><span class="keys"><span class="kbd">⌘</span><span class="kbd">⌥</span><span class="kbd">L</span></span></div>
+      </div>
+
+      <div class="grp">
+        <h4>Format</h4>
+        <div class="row"><span class="name">Bold</span><span class="keys"><span class="kbd">⌘</span><span class="kbd">B</span></span></div>
+        <div class="row"><span class="name">Italic</span><span class="keys"><span class="kbd">⌘</span><span class="kbd">I</span></span></div>
+        <div class="row"><span class="name">Strikethrough</span><span class="keys"><span class="kbd">⌘</span><span class="kbd">Y</span></span></div>
+        <div class="row"><span class="name">Plain text (strip formatting)</span><span class="keys"><span class="kbd">⌘</span><span class="kbd">T</span></span></div>
+        <div class="row"><span class="name">Indent / Outdent</span><span class="keys"><span class="kbd">⌘</span><span class="kbd">]</span><span class="kbd">[</span></span></div>
+        <div class="row"><span class="name">Insert link from clipboard</span><span class="keys"><span class="kbd">⌘</span><span class="kbd">⇧</span><span class="kbd">L</span></span></div>
+        <div class="row"><span class="name">Paste as Markdown link</span><span class="keys"><span class="kbd">⌘</span><span class="kbd">⌥</span><span class="kbd">V</span></span></div>
+        <div class="row"><span class="name">Copy note link</span><span class="keys"><span class="kbd">⌘</span><span class="kbd">⌥</span><span class="kbd">C</span></span></div>
+      </div>
+
+      <div class="grp">
+        <h4>View &amp; preview</h4>
+        <div class="row"><span class="name">Toggle preview window</span><span class="keys"><span class="kbd">⌘</span><span class="kbd">⌃</span><span class="kbd">P</span></span></div>
+        <div class="row"><span class="name">Toggle preview source</span><span class="keys"><span class="kbd">⌘</span><span class="kbd">⌥</span><span class="kbd">U</span></span></div>
+        <div class="row"><span class="name">Toggle word count</span><span class="keys"><span class="kbd">⌘</span><span class="kbd">⇧</span><span class="kbd">K</span></span></div>
+        <div class="row"><span class="name">Save bookmark</span><span class="keys"><span class="kbd">⌘</span><span class="kbd">S</span></span></div>
+        <div class="row"><span class="name">Show bookmarks</span><span class="keys"><span class="kbd">⌘</span><span class="kbd">0</span></span></div>
+        <div class="row"><span class="name">Restore bookmark</span><span class="keys"><span class="kbd">⌘</span><span class="kbd">1</span><span style="color:var(--ink-3);font-size:11px;padding:0 2px">…</span><span class="kbd">9</span></span></div>
+      </div>
+
+      <div class="grp">
+        <h4>Notes &amp; files</h4>
+        <div class="row"><span class="name">Edit tags</span><span class="keys"><span class="kbd">⌘</span><span class="kbd">⇧</span><span class="kbd">T</span></span></div>
+        <div class="row"><span class="name">Rename note</span><span class="keys"><span class="kbd">⌘</span><span class="kbd">R</span></span></div>
+        <div class="row"><span class="name">Reveal in Finder</span><span class="keys"><span class="kbd">⌘</span><span class="kbd">⇧</span><span class="kbd">R</span></span></div>
+        <div class="row"><span class="name">Delete note</span><span class="keys"><span class="kbd">⌘</span><span class="kbd">⌫</span></span></div>
+        <div class="row"><span class="name">Export note</span><span class="keys"><span class="kbd">⌘</span><span class="kbd">E</span></span></div>
+        <div class="row"><span class="name">Print</span><span class="keys"><span class="kbd">⌘</span><span class="kbd">P</span></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────── Lineage ─────────────── -->
+<section class="lineage" id="lineage" data-screen-label="06 Lineage">
+  <div class="container">
+    <div class="header">
+      <p class="eyebrow">Lineage</p>
+      <h2>Twenty&#8209;three years of the same good&nbsp;idea.</h2>
+      <p class="lede" style="margin-top:18px">nvEnvy stands on two pieces of work that taught a generation of writers how a notes app should feel.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="step">
+        <div class="year">2003 · Notational Velocity</div>
+        <h3>nv</h3>
+        <div class="by">by Zachary Schneirov</div>
+        <p>The original. Search and create from a single field. Open source under a BSD&#8209;style license; the idea everyone else has been copying ever&nbsp;since.</p>
+      </div>
+      <div class="step">
+        <div class="year">2009 · nvAlt</div>
+        <h3>nvAlt</h3>
+        <div class="by">by Brett Terpstra</div>
+        <p>A fork that kept nv breathing through a decade of macOS releases &mdash; Markdown, MultiMarkdown, tags, an external editor pipeline. Beloved.</p>
+      </div>
+      <div class="step current">
+        <div class="year">2026 · nvEnvy</div>
+        <h3>nvEnvy</h3>
+        <div class="by">a community reboot</div>
+        <p>A native Swift rewrite for Apple silicon and modern macOS. Same single field. Same plain text on disk. Same muscle memory. New foundations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────── FAQ ─────────────── -->
+<section class="faq" id="faq" data-screen-label="07 FAQ">
+  <div class="container">
+    <div>
+      <p class="eyebrow">FAQ</p>
+      <h2>Questions, fairly&nbsp;asked.</h2>
+    </div>
+    <div class="list">
+      <details open>
+        <summary>Is nvEnvy free?</summary>
+        <div class="a">Yes. nvEnvy is open source under the <a href="https://github.com/kenm47/nvEnvy/blob/main/LICENSE" target="_blank" rel="noopener">MIT license</a>. If you find it useful, a star on GitHub or a pull request goes further than money.</div>
+      </details>
+      <details>
+        <summary>Will my old nv / nvAlt notes work?</summary>
+        <div class="a">Yes &mdash; there&rsquo;s a one&#8209;click importer from nvALT that brings over your notes, frontmatter, and OpenMeta tags. You can also just point nvEnvy at the same folder; anything that&rsquo;s a plain text or Markdown file shows up on launch.</div>
+      </details>
+      <details>
+        <summary>Does it sync?</summary>
+        <div class="a">iCloud Drive sync is built in, with proper conflict resolution and Finder tag mirroring. Because notes are plain files in a folder, you can also use Dropbox, Syncthing, a git repo &mdash; nvEnvy just reads and writes the folder.</div>
+      </details>
+      <details>
+        <summary>What about iOS / iPad?</summary>
+        <div class="a">Not in v0.1. The whole point is being native to the Mac. An iOS companion is on the roadmap once the desktop is solid &mdash; help wanted there in particular.</div>
+      </details>
+      <details>
+        <summary>Is this Electron?</summary>
+        <div class="a">No. Native Swift and SwiftUI, with an AppKit assist where it counts. macOS 14 Sonoma or later.</div>
+      </details>
+      <details>
+        <summary>How does this differ from Obsidian / Bear / Apple Notes?</summary>
+        <div class="a">nvEnvy is smaller in scope on purpose. No graph view, no canvases, no plugins, no AI. One search field, plain&nbsp;text files, a fast editor, a few clean integrations (AppleScript, Shortcuts, URL schemes, Services). If you miss the days when a notes app was a notes app, that&rsquo;s what this&nbsp;is.</div>
+      </details>
+      <details>
+        <summary>Is it on the Mac App Store?</summary>
+        <div class="a">Coming soon. In the meantime, a notarized, hardened&#8209;runtime <span class="tok-pill">.dmg</span> comes from <a href="https://github.com/kenm47/nvEnvy/releases" target="_blank" rel="noopener">GitHub Releases</a>, with auto&#8209;update via Sparkle.</div>
+      </details>
+      <details>
+        <summary>What languages is it localized to?</summary>
+        <div class="a">English, German, French, Italian, Portuguese&nbsp;(BR), and Simplified&nbsp;Chinese, with more coming as contributors arrive.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────── Contribute ─────────────── -->
+<section class="contribute" id="contribute" data-screen-label="08 Contribute">
+  <div class="container">
+    <p class="eyebrow">Open source</p>
+    <h2>Yes, this is vibe&#8209;coded. Your contributions are appreciated.</h2>
+    <p class="lede">nvEnvy is a small project carried by people who&rsquo;ve used nv and nvAlt for a long time. It&rsquo;s MIT&nbsp;licensed, written in Swift&nbsp;and&nbsp;SwiftUI, and very much a work in progress. If a Saturday spent fixing a sharp edge sounds like a Saturday well spent, the repo is open.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://github.com/kenm47/nvEnvy" target="_blank" rel="noopener">
+        Open the repo
+        <svg class="chevron" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true">
+          <path d="M4 2l5 5-5 5" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <a class="btn btn-ghost" href="https://github.com/kenm47/nvEnvy/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">Contributing guide</a>
+      <a class="btn btn-ghost" href="https://github.com/kenm47/nvEnvy/issues" target="_blank" rel="noopener">Open issues</a>
+    </div>
+    <div class="code" role="group" aria-label="Clone the repository">
+      <span class="prompt">$</span>
+      <span>git clone https://github.com/kenm47/nvEnvy.git</span>
+      <button type="button" data-copy="git clone https://github.com/kenm47/nvEnvy.git">Copy</button>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ─────────────── Footer ─────────────── -->
+<footer data-screen-label="09 Footer">
+  <div class="container">
+    <div class="col">
+      <h5>nvEnvy</h5>
+      <p style="color:var(--ink);font-size:15px;line-height:1.5">A fast, plain&#8209;text, search&#8209;as&#8209;you&#8209;type note app for macOS. A community reboot of Notational Velocity and nvAlt.</p>
+    </div>
+    <div class="col">
+      <h5>Download</h5>
+      <a href="https://github.com/kenm47/nvEnvy/releases" target="_blank" rel="noopener">GitHub Releases (.dmg)</a>
+      <a href="#">Mac App Store</a>
+      <a href="https://github.com/kenm47/nvEnvy/blob/main/RELEASING.md" target="_blank" rel="noopener">Build from source</a>
+    </div>
+    <div class="col">
+      <h5>Project</h5>
+      <a href="https://github.com/kenm47/nvEnvy" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/kenm47/nvEnvy/issues" target="_blank" rel="noopener">Issues</a>
+      <a href="https://github.com/kenm47/nvEnvy/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">Contributing</a>
+      <a href="https://github.com/kenm47/nvEnvy/blob/main/LICENSE" target="_blank" rel="noopener">MIT license</a>
+    </div>
+    <div class="col">
+      <h5>Support</h5>
+      <p style="color:var(--ink);font-size:15px;line-height:1.5;margin:0 0 8px">Questions or bug reports? <a class="support-email" data-u="k+nvenvy" data-d="lunt.co" href="#" rel="nofollow">Email the creator</a>.</p>
+    </div>
+    <div class="col">
+      <h5>With thanks to</h5>
+      <a href="https://notational.net" target="_blank" rel="noopener">Zachary Schneirov</a>
+      <a href="https://brettterpstra.com/projects/nvalt/" target="_blank" rel="noopener">Brett Terpstra</a>
+      <a href="#">Everyone who shipped a PR</a>
+    </div>
+
+    <div class="credits">
+      <div class="mark">
+        <img src="appicon.png" alt="" />
+        <span>nvEnvy</span>
+      </div>
+      <div>v0.1.0 · macOS 14+ · Universal · Swift &amp; SwiftUI</div>
+      <div>© 2026 the nvEnvy authors · MIT licensed · Notational Velocity and nvALT are © their respective authors</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ─────────────── Page interactivity (vanilla) ─────────────── -->
+<script>
+  // Assemble obfuscated support email links at runtime
+  document.querySelectorAll('a.support-email[data-u][data-d]').forEach((a) => {
+    const u = a.getAttribute('data-u');
+    const d = a.getAttribute('data-d');
+    a.href = 'mailto:' + u + String.fromCharCode(64) + d;
+  });
+
+  // Copy buttons
+  document.addEventListener('click', (e) => {
+    const b = e.target.closest('[data-copy]');
+    if (!b) return;
+    const text = b.getAttribute('data-copy');
+    navigator.clipboard?.writeText(text).then(() => {
+      const prev = b.textContent;
+      b.textContent = 'Copied';
+      setTimeout(() => { b.textContent = prev; }, 1200);
+    }).catch(() => {});
+  });
+</script>
+
+<!-- ─────────────── Tweaks panel (React island) ─────────────── -->
+<div id="tweaks-root"></div>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="app-tweaks.jsx"></script>
+
+</body>
+</html>
