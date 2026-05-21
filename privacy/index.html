@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en" data-theme="light" data-accent="coral" data-density="regular">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy Policy — nvEnvy</title>
+  <meta name="description" content="nvEnvy's privacy policy. Short version: we don't collect anything." />
+  <meta name="theme-color" content="#1F2754" />
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="icon" type="image/png" href="../appicon.png" />
+  <link rel="apple-touch-icon" href="../appicon.png" />
+</head>
+<body>
+
+<header class="topbar">
+  <div class="container">
+    <a class="mark" href="../" aria-label="nvEnvy home">
+      <img src="../appicon.png" alt="" />
+      <span>nvEnvy</span>
+    </a>
+    <nav>
+      <a href="../#features">Features</a>
+      <a href="../#shortcuts">Shortcuts</a>
+      <a href="../#lineage">Lineage</a>
+      <a href="../#faq">FAQ</a>
+    </nav>
+    <a class="cta" href="../#download">
+      Download
+      <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true">
+        <path d="M2 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
+</header>
+
+<main>
+  <section style="padding-block: clamp(60px, 8vw, 120px) clamp(40px, 6vw, 80px);">
+    <div class="container-narrow">
+      <p class="eyebrow">Privacy</p>
+      <h1 style="margin-bottom:8px">Privacy Policy</h1>
+      <p class="meta" style="margin-bottom:32px">Effective Date: May 20, 2026</p>
+
+      <p class="lede">nvEnvy does not collect, store, transmit, or share any personal data, usage data, analytics, or information of any kind. Your notes exist solely on your device. We have no servers, no tracking, no cookies, no accounts, and no third-party integrations.</p>
+
+      <p class="lede">If you delete the app, your data is gone. We never had it.</p>
+
+      <h3 style="margin-top:40px">Changes</h3>
+      <p class="lede">If this policy changes, we'll update this page with a new effective date.</p>
+
+      <h3 style="margin-top:32px">Contact</h3>
+      <p class="lede"><a class="support-email" data-u="k+nvenvy" data-d="lunt.co" href="#" rel="nofollow">Email the creator</a>.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="credits" style="grid-column: 1 / -1">
+      <div class="mark">
+        <img src="../appicon.png" alt="" />
+        <span>nvEnvy</span>
+      </div>
+      <div>Built by Kendall at <a href="https://lunt.co" target="_blank" rel="noopener">Lunt.co</a></div>
+      <div>© 2026 the nvEnvy authors · MIT licensed</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('a.support-email[data-u][data-d]').forEach((a) => {
+    const u = a.getAttribute('data-u');
+    const d = a.getAttribute('data-d');
+    a.href = 'mailto:' + u + String.fromCharCode(64) + d;
+  });
+</script>
+
+</body>
+</html>
